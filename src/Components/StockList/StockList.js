@@ -12,6 +12,7 @@ function StockList(){
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [newStockItem, setNewStockItem] = useState();
+    const [action, setAction] = useState("add");
     const [inventory, updatedInventory] = useState();
 
 
@@ -53,10 +54,12 @@ function StockList(){
     //update inventory
     function updateInventory(e) {
         let updatedInventory = inventory;
-        setInventory({
+        setAction("add");
+        setNewStockItem({
             ...updatedInventory,
             [e.target.id]: e.target.value
         })
+        refreshPage();
     }
 
     //error check
